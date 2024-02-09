@@ -1,0 +1,27 @@
+.form {
+  &__wrap {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    column-gap: 1em;
+  }
+  &__btn {
+    font-size: 2vw;
+    background-color: #ffdd57;
+    border: 1px solid #ffdd57;
+    border-radius: 22px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+  &__error {
+    text-align: end;
+    color: #ff2f2f;
+    font-weight: 700;
+  }
+}

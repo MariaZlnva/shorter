@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    font-size: 5vw;
+    margin: 0;
+    color: #ffdd57;
+    text-shadow: 5px -2px 5px black;
+  }
+  &__log-out {
+    font-weight: 600;
+    font-size: 2vw;
+    border: none;
+    color: black;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+}

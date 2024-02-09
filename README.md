@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Проект Shorter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### О проекте
 
-Currently, two official plugins are available:
+Проект выполнен в качестве тестового задания.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Реализована frontend часть сервиса сокращения ссылок.
+Основной функционал сервиса - получение по произвольной ссылке короткой ссылки, реализующей перенаправление пользователя на исходную страницу. Это
+может быть удобно для отправки в SMS или там, где размер текстового сообщения ограничен.
+Помимо этого, пользователь, создавший короткую ссылку, может просматривать количество
+переходов по ней. Эта информация будет доступна только пользователю, который её создал.
+Т.е. пользователь может зарегистрироваться на сайте, авторизоваться, создать
+произвольное количество сокращенных ссылок и просматривать количество переходов по каждой
+из них.
+Реализовано копирование сокращенных ссылок при клике по ним.
 
-## Expanding the ESLint configuration
+### Используемые технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Redux
+- Typescript
+- Sass
+- Vite
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**[Ссылка на деплой проекта.](https://mariazlnva.github.io/)**
