@@ -22,4 +22,4 @@
 - Sass
 - Vite
 
-**[Ссылка на деплой проекта.](https://mariazlnva.github.io/)**
+**[Ссылка на деплой проекта.](https://mariazlnva.github.io/shorter)**

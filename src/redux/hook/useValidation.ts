@@ -1,47 +1,43 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { IInputForm } from "../types";
-// const validator = require('validator');
 
 const useValidation = () => {
-  const [values, setValues] = useState<IInputForm>({});
-  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState<IInputForm>({
+    usernameLogin: "",
+    usernameRegister: "",
+    passwordLogin: "",
+    passwordRegister: "",
+    link: "",
+  });
   const [isValidForm, setIsValidForm] = useState(false);
 
   const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, validationMessage } = evt.target;
-
-    // if (name === 'email') {
-    //   if(!validator.isEmail(value)) {
-    //     setErrors({ ...errors, [name]: 'Email несоответствует шаблону электронной почты: name@domain.zone'})
-    //   } else {
-    //     setErrors({ ...errors, [name]: validationMessage })
-    //   }
-    // } else {
-    //   setErrors({...errors, [name]: validationMessage });
-    // }
-
-    setValues((values) => ({ ...values, [name]: value })); // доб.в объект данные
+    const { name, value } = evt.target;
+    setValues((values) => ({ ...values, [name]: value }));
     setIsValidForm(evt.target.closest("form")!.checkValidity());
-    console.log(evt.target.closest("form")!.checkValidity());
   };
-
-  // const resetValidation = useCallback(
-  //   (values = {}, errors = {}, isValidForm = false) => {
-  //     setValues(values);
-  //     setErrors(errors);
-  //     setIsValidForm(isValidForm);
-  //   },
-  //   [setValues, setErrors, setIsValidForm]
-  // );
+  const resetValidation = useCallback(
+    (
+      values = {
+        usernameLogin: null,
+        usernameRegister: null,
+        passwordLogin: null,
+        passwordRegister: null,
+        link: null,
+      }
+    ) => {
+      setValues(values);
+    },
+    [setValues]
+  );
 
   return {
     values,
     setValues,
-    errors,
     onChange,
     isValidForm,
     setIsValidForm,
-    // resetValidation,
+    resetValidation,
   };
 };
 

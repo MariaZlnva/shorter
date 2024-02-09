@@ -27,16 +27,18 @@ const Register = () => {
     if (isLoggedIn) navigate("/");
   }, [isLoggedIn]);
 
-  const handleRegisterSubmit = (evt) => {
+  const handleRegisterSubmit: React.FormEventHandler<HTMLFormElement> = (
+    evt
+  ) => {
     evt.preventDefault();
     const { usernameRegister, passwordRegister } = values;
-
-    dispatch(
-      registerUser({ username: usernameRegister, password: passwordRegister })
-    );
+    if (usernameRegister && passwordRegister)
+      dispatch(
+        registerUser({ username: usernameRegister, password: passwordRegister })
+      );
   };
 
-  const handleChange = (evt) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     onChange(evt);
   };
   return (

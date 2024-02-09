@@ -26,8 +26,6 @@ export const createShortLink = createAsyncThunk(
         if (error && error.response && error.response.data.detail) {
           return rejectWithValue(error.response.data.detail);
         } else {
-          console.log(error.message);
-
           return rejectWithValue(error.message);
         }
       }

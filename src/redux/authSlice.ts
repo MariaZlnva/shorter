@@ -53,12 +53,10 @@ const authSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccessLogin = true;
-      state.isToken = action.payload.access_token;
+      state.isToken = action.payload!.access_token;
       state.isLoggedIn = true;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
-      console.log(action);
-
       state.isLoading = false;
       state.isErrorLogin = true;
       state.messageErrorLogin = action.payload as string;

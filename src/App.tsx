@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/Header.tsx/Header";
+import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Main from "./components/Main/Main";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";

@@ -15,7 +15,6 @@ const Table: React.FC<ITableProps> = () => {
   }, [listLink]);
 
   const listToRender = statistics;
-
   const handlerCopyContent = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -31,7 +30,7 @@ const Table: React.FC<ITableProps> = () => {
     "Loading..."
   ) : (
     <>
-      {listToRender.length !== 0 && (
+      {listToRender && listToRender.length !== 0 && (
         <div className="table">
           <h3 className="table__title">История ссылок:</h3>
 
@@ -55,7 +54,7 @@ const Table: React.FC<ITableProps> = () => {
                     <div className="table__data">{el.target}</div>
                     <div
                       className={
-                        el.counter >= 1
+                        el.counter! >= 1
                           ? "table__data table__data_style table__data_active"
                           : "table__data table__data_style"
                       }

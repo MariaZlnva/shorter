@@ -21,16 +21,16 @@ const Login = () => {
     }
   }, [isToken, isSuccessLogin, isLoggedIn]);
 
-  const handleLoginSubmit = (evt) => {
+  const handleLoginSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
-    console.log(values);
-    const { usernameLogin, passwordLogin } = values;
 
-    dispatch(loginUser({ username: usernameLogin, password: passwordLogin }));
+    const { usernameLogin, passwordLogin } = values;
+    if (usernameLogin && passwordLogin)
+      dispatch(loginUser({ username: usernameLogin, password: passwordLogin }));
     dispatch(deleteMessageErrorLogin());
   };
 
-  const handleChange = (evt) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     onChange(evt);
   };
   return (

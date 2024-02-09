@@ -12,11 +12,11 @@ export interface IToken {
 }
 
 export interface IInputForm {
-  usernameLogin: string | "";
-  usernameRegister: string | "";
-  passwordLogin: string | "";
-  passwordRegister: string | "";
-  link: string | "";
+  usernameLogin: string | null;
+  usernameRegister: string | null;
+  passwordLogin: string | null;
+  passwordRegister: string | null;
+  link: string | null;
 }
 export type IInputName =
   | "usernameLogin"
@@ -25,9 +25,9 @@ export type IInputName =
   | "passwordRegister"
   | "link";
 
-export interface IDataLink {
-  counter: number;
-  id: number;
+export type IDataLink = {
+  counter: number | null;
+  id: number | null;
   short: string;
   target: string;
-}
+};

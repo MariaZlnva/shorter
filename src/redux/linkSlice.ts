@@ -12,7 +12,12 @@ interface ILinkSlice {
 }
 
 const initialState: ILinkSlice = {
-  listLink: null,
+  listLink: {
+    counter: null,
+    id: null,
+    short: "",
+    target: "",
+  },
   statistics: [],
   isLoading: false,
   isErrorCreate: false,
@@ -27,39 +32,40 @@ const linkSlice = createSlice({
     deleteMessageErrorCreate: (state) => {
       state.messageErrorCreate = "";
     },
+    deleteListLink: (state) => {
+      state.listLink = {
+        counter: null,
+        id: null,
+        short: "",
+        target: "",
+      };
+    },
   },
 
   extraReducers: (builder) => {
-    builder.addCase(createShortLink.pending, (action) => {
-      console.log(action);
-    });
+    builder.addCase(createShortLink.pending, () => {});
     builder.addCase(createShortLink.fulfilled, (state, action) => {
-      console.log(action);
-      state.listLink = action.payload;
+      if (action.payload?.id) state.listLink = action.payload;
     });
     builder.addCase(createShortLink.rejected, (state, action) => {
-      console.log(action); //payload: ''
       state.isErrorCreate = true;
       state.messageErrorCreate = String(action.payload);
     });
 
-    builder.addCase(getStatistics.pending, (state, action) => {
-      console.log(action);
+    builder.addCase(getStatistics.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(getStatistics.fulfilled, (state, action) => {
-      console.log(action);
       state.statistics = action.payload;
       state.isLoading = false;
       state.isErrorGetStatistics = false;
     });
-    builder.addCase(getStatistics.rejected, (state, action) => {
-      console.log(action);
+    builder.addCase(getStatistics.rejected, (state) => {
       state.isLoading = false;
       state.isErrorGetStatistics = true;
     });
   },
 });
 
-export const { deleteMessageErrorCreate } = linkSlice.actions;
+export const { deleteMessageErrorCreate, deleteListLink } = linkSlice.actions;
 export default linkSlice.reducer;

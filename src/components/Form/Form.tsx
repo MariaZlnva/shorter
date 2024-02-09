@@ -5,20 +5,19 @@ import Input from "../Input/Input";
 import "./Form.scss";
 
 const Form = () => {
-  const { values, onChange, isValidForm, setValues } = useValidation();
+  const { values, onChange, isValidForm, resetValidation } = useValidation();
   const dispatch = useAppDispatch();
   const { messageErrorCreate } = useAppSelector((state) => state.link);
   const { isErrorCreate } = useAppSelector((state) => state.link);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
     const { link } = values;
-
-    dispatch(createShortLink({ link }));
-    setValues({});
+    if (link) dispatch(createShortLink({ link }));
+    resetValidation();
   };
 
-  const handleChange = (evt) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     onChange(evt);
   };
   return (

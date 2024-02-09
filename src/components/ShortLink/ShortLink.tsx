@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { useAppSelector } from "../../redux/store";
+import { deleteListLink } from "../../redux/linkSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import "./ShortLink.scss";
 
 const ShortLink = () => {
   const { listLink } = useAppSelector((state) => state.link);
-  const { isLoggedIn } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   const handlerCopyContent = async (text: string) => {
     try {
@@ -14,10 +15,14 @@ const ShortLink = () => {
       console.error("Failed to copy: ", err);
     }
   };
-  useEffect(() => {}, [isLoggedIn]);
+  useEffect(() => {
+    return () => {
+      dispatch(deleteListLink());
+    };
+  }, []);
   return (
     <>
-      {listLink !== null && (
+      {listLink.id !== null && (
         <div className="shortLink">
           <h4 className="shortLink__title">Ваша ссылка готова: </h4>
           <a
